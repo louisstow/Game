@@ -1,0 +1,36 @@
+<html>
+<head>
+<script src="Game.js"></script>
+<script>
+window.onload = function() {
+	var point = null;
+	
+	Game.start(document.getElementById("canvas"));
+	
+	Game.tick(function(dt, frame) {
+		//console.log("tick", dt);
+	});
+	
+	Game.render(function(ctx) {
+		//console.log("render");
+		if(point) {
+			ctx.fillStyle = "red";
+			ctx.fillRect(point.x, point.y, 5, 5);
+		}
+	});
+	
+	Game.input(function(type, e) {
+		point = e.point;
+		console.log(type, e);
+	});
+};
+</script>
+<style>
+body { text-align: center }
+#canvas { border: 2px solid #000; margin: auto }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>
